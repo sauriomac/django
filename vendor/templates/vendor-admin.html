@@ -2,9 +2,34 @@
 
 
 {% block content %}
-<div class="container">
 
-<h1 class="text-center text-warning">become admin- {{ vendor.name}}</h1>
-<a href="{%url 'logout' %}" class="btn btn-danger">Logout</a>
+    <div class="d-flex justify-content-left mt-2 ">
+        <h1 class="mx-2 text-right text-warning">Welcome admin {{ vendor.name}}</h1>
+        <a href="{%url 'logout' %}" class="btn btn-danger m-1">Logout</a>
+    </div>
+    <div class="container">
+<div class="container border border-3 border-warning rounded-2 p-5 my-4">
+    <h2 class="text-center">Products</h2>
+    {% if product %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>title</th>
+                <th>Price</th>
+            </tr>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.title }}</td>
+                <td>{{ product.price }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </thead>
+    </table>
+    {% else %}
+    <p class="alert alert-warning" >you dont have any products available</p>
+    {% endif %}
 </div>
+</div>  
 {% endblock content %}
