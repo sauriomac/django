@@ -1,3 +1,4 @@
 {
-    "activestate.promptRuntimeCreation": false
+    "activestate.promptRuntimeCreation": false,
+    "python.formatting.provider": "autopep8"
 }

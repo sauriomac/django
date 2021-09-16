@@ -2,10 +2,13 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from .forms import ProductForm
+
+from product.models import Product
+from django.utils.text import slugify
 
 from .models import Vendor
 
-# Create your views here.
 def become_vendor(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
@@ -27,5 +30,24 @@ def become_vendor(request):
 @login_required
 def vendor_admin(request):
     vendor = request.user.vendor
+    products = vendor.products.all()
 
-    return render(request, 'vendor-admin.html', {'vendor': vendor})
+    return render(request, 'vendor-admin.html', {'vendor': vendor, 'products': products})
+
+@login_required
+def add_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            product = form.save(commit=False)
+            product.vendor = request.user.vendor
+            product.slug = slugify(product.title)
+            product.save()
+
+            return redirect('vendor_admin')
+
+    else:
+        form = ProductForm()
+
+    return render(request, 'add_product.html', {'form':form})
