@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+
+<h1 class="text-center text-warning">become admin- {{ vendor.name}}</h1>
+<a href="{%url 'logout' %}" class="btn btn-danger">Logout</a>
+</div>
+{% endblock content %}

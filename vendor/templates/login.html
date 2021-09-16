@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load tailwind_filters %}
+
+
+{% block content %}
+<h1 class="text-center text-warning" >Log in</h1>
+<div class="my-3 mx-auto py-5 d-flex justify-content-center rounded border border-warning "/>
+
+<form method="post" action = ".">
+ {% csrf_token %}
+ {{ form|crispy }}
+ 
+ <div class="container">
+     <div>
+         <button class="btn btn-warning text-uppercase align-center">Log in</button>
+     </div>
+</div>
+</form>
+</div>
+
+{% endblock content %}

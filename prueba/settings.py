@@ -27,6 +27,15 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'vendor_admin'
+LOGOUT_REDIRECT_URL = 'frontpage'
+
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
+
 
 # Application definition
 
@@ -39,6 +48,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'prueba',
     'shop',
+    'vendor',
+    'crispy_forms',
+    'crispy_tailwind',
+    'product',
     # 'tailwind',
 ]
 
