@@ -1,10 +1,23 @@
-m{% extends "base.html" %}
-
-{% block content  %}
+{% extends "base.html" %} {% block content %}
 <h1 class="text-center text-uppercase text-primary">Frontpage</h1>
-<div class="m-3 mh-100-100 w-100container rounded bg-light">
-djangoproject shop test
+<div class="m-3 p-2 rounded bg-light">
+    <div class="text-capitalize">
+      <h1>New Products</h1>
+
+      <div class="d-flex justify-content-between">
+        {% for product in New_Products %}
+        <div class="card">
+          <div class="card-body">
+                <img class="card-img-top" src="{{ product.get_thumbnails }}" />
+                <h5 class="card-title">{{ product.title}}</h5>
+                <p class="card-text">{{ product.price }}</p>
+                <button class="btn btn-dark" type="submit">View more.</button>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}
 </div>
-
-{% endblock  %}
-

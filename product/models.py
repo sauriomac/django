@@ -29,6 +29,8 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     date_added = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='upload/', blank=True,null=True)
+    thumbnail = models.ImageField(upload_to='upload/', blank=True,null=True)
+
 
     class Meta:
         ordering = ['-date_added']
@@ -38,9 +40,9 @@ class Product(models.Model):
 
     def get_thumbnails(self):
         if self.thumbnail:
-            return self.thumbnail.urls()
+            return self.thumbnail.url
         else:
-            if self.image:
+            if  self.image:
                 self.thumbnail = self.make_thumbnail(self.image)
                 self.save()
             
@@ -50,10 +52,11 @@ class Product(models.Model):
 
     def make_thumbnail(self, image, size=(300,200)):
         img = Image.open(image)
-        img.covert('RGB')
+        img.convert('RGB')
         img.thumbnail(size)
 
         thumb_io = BytesIO()
-        img.save(thumb_io, name=image.name)
+        img.save(thumb_io, 'JPEG', quality=85)
+        thumbnail = File(thumb_io, name=image.name)
 
         return thumbnail
