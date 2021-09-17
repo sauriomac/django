@@ -1,0 +1,9 @@
+<div class="card mx-2">
+          <div class="card-body">
+                <img class="card-img-top" src="{{ product.get_thumbnails }}" />
+                <h5 class="card-title text-secondary">{{ product.title}}</h5>
+                <p class="card-text">{{ product.price }}</p>
+                <a  href="{% url 'product' product.category.slug product.slug %}" 
+                 class="btn btn-dark" type="submit">View more.</a>
+          </div>
+        </div>

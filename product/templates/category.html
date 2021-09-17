@@ -1,12 +1,12 @@
 {% extends "base.html" %} 
  {% block content %}
-<h1 class="text-center text-uppercase text-primary">Frontpage</h1>
+<h1 class="text-center text-uppercase text-primary">{{category.title}}</h1>
 <div class="m-3 p-2 rounded bg-light">
     <div class="text-capitalize">
-      <h1>New Products</h1>
+      <h1>{{category.title}}</h1>
 
       <div class="d-flex justify-content-between">
-        {% for product in New_Products %}
+        {% for product in category.products.all %}
             {% include 'list_item.html' %}
         {% endfor %}
       </div>

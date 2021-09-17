@@ -1,0 +1,31 @@
+{% extends "base.html" %} 
+ {% block content %}
+        <div class="d-flex">
+            {% if product.image %}
+            <div class="mx-3 my-2">
+                <img src="{{ product.image.url }}" >
+            </div>
+            {% endif %}
+            <div class="m-5 p-4">
+                <h1 class="my-4 text-uppercase">{{ product.title }}</h1>
+                <p class="my-4">{{ product.description }}</p>
+                <p class="my-4"> Price : {{ product.price }}</p>
+                <p><span class="p-2 badge bg-dark text-white"> by {{ product.vendor.name}}</span></p>
+
+            </div>
+
+         </div>
+            <hr>
+        {% if similar_products %}
+        <div class="my-4">
+            <h2 class=" text-uppercase text-center">similar products</h2>
+        </div>
+            <div class="d-flex mt-5 p-4">
+                    
+                
+                    {% for product in similar_products %}
+                        {% include 'list_item.html' %}
+                    {% endfor %}
+            </div>
+        {% endif %}
+ {% endblock %}
