@@ -15,13 +15,14 @@
         <table class="table border border-3 border-primary rounded-3 ">
             <thead>
                 <tr class=" bg-black text-white">
-                    <th >Title</th>
+                    <th>Title</th>
                     <th>Price</th>
                 </tr>
             <tbody>
                 {% for product in products %}
                 <tr>
-                    <td><a class="text-decoration-none" href="{% url 'product' product.category.slug product.slug %}">{{ product.title }}</a></td>
+                    <td><a class="text-decoration-none"
+                            href="{% url 'product' product.category.slug product.slug %}">{{ product.title }}</a></td>
                     <td>{{ product.price }}</td>
                 </tr>
                 {% endfor %}
