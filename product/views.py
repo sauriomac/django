@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
 import random
 
 from .models import Category, Product
@@ -20,3 +20,8 @@ def category(request, category_slug):
 
     return render(request, 'category.html', {'category': category})
 
+def search(request):
+    query = request.GET.get('query', '')
+    products = Product.objects.filter(Q(title__icontains=query) | Q(description__icontains=query))
+
+    return render(request, 'search.html', {'products': products, query: query})

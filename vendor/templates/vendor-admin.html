@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
-
-
 {% block content %}
 
-<div class="d-flex justify-content-left mt-2 ">
-    <h1 class="mx-2 text-right text-warning">Welcome admin {{ vendor.name}}</h1>
-    <a href="{%url 'logout' %}" class="btn btn-danger m-1">Logout</a>
+<div class="d-flex justify-content-left mt-2 mx-5 ">
+    <a href="{%url 'logout' %}" class="btn btn-outline-warning btn-sm text-sm">Logout</a>
+    <p class="mx-2 text-right text-warning my-auto">Welcome admin {{ vendor.name}}</p>
 </div>
 <div class="container">
     <div class="container border border-3 border-warning rounded-2 p-5 my-4">
         <h2 class="text-center">Products</h2>
         <a href="{% url 'add_product' %}" class="btn btn-dark my-5">Add Products</a>
         {% if products %}
-        <table class="table border border-3 border-primary rounded-3 ">
+        <table class="table border border-3 border-danger rounded-3 ">
             <thead>
                 <tr class=" bg-black text-white">
                     <th>Title</th>

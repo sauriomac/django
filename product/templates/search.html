@@ -3,10 +3,11 @@
 <h1 class="text-center text-uppercase text-primary">{{category.title}}</h1>
 <div class="m-3 p-2 rounded bg-light">
     <div class="m-4 p-5">
-      {% comment %} <h1>{{category.title}}</h1> {% endcomment %}
+      <h1>Search</h1>
+      <h3>{{ query }}</h3>
 
       <div class="d-flex justify-content-between">
-        {% for product in category.products.all %}
+        {% for product in products %}
             {% include 'list_item.html' %}
         {% endfor %}
       </div>
