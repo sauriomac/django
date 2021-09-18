@@ -1,17 +1,17 @@
 {% extends "base.html" %} 
  {% block content %}
-<h1 class="text-center text-uppercase text-primary">Frontpage</h1>
+{% comment %} <h1 class="text-center text-uppercase text-primary">Frontpage</h1> {% endcomment %}
 <div class="m-3 p-2 rounded bg-light">
-    <div class="text-capitalize">
-      <h1>New Products</h1>
+      <p class="m-4"><span class=" text-danger shadow p-2 bagde rounded bg-warning">New Products</span></p>
 
-      <div class="d-flex justify-content-between">
+    <div class="text-capitalize">
+
+      <div class="d-flex flex-wrap justify-content-center">
         {% for product in New_Products %}
             {% include 'list_item.html' %}
         {% endfor %}
       </div>
     </div>
-  </div>
-
+    </div>
   {% endblock %}
-</div>
+

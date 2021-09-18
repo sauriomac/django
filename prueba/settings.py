@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-^efndbs0b=mco^fcri_*7g=e2fo@x$phwya_$$db050))$gqg9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['secret-forest-23608.herokuapp.com',]
+ALLOWED_HOSTS = ['*',]
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'vendor_admin'
